@@ -23,14 +23,14 @@ public class CarbohydrateCalculator {
 	
 	@FindBy(xpath = "//div[@id='topmenu']/ul/li/a")
 	private List<WebElement> unitType;
-	
-	
 	@FindBy(xpath = "//input[@value='Calculate']")
 	private WebElement calculateButton;
 	@FindBy(xpath = "//div[@class='topNavAbs']/a")
 	private List<WebElement> dashboardTabs;
 	@FindBy(xpath = "//fieldset/a")
 	private List<WebElement>categoryRelated;
+	@FindBy(xpath = "//div[@id='topmenu']/ul/li/a")
+	private List<WebElement>unitOption;
 	public CarbohydrateCalculator() {
 		PageFactory.initElements(driver, this);
 	}

@@ -17,6 +17,7 @@ import java.util.function.Supplier;
 
 public class Base {
 	public static WebDriver driver;
+	private static Supplier<WebDriverWait> getWait = () -> new WebDriverWait(driver, Constants.EXPLICIT_WAIT);
 	
 	public static void openBrowser() {
 		ConfigReader.loadProperty(Constants.CONFIG_FILEPATH);
@@ -45,8 +46,6 @@ public class Base {
 		driver.quit();
 	}
 	
-	private static Supplier<WebDriverWait> getWait = () -> new WebDriverWait(driver, Constants.EXPLICIT_WAIT);
-	
 	public static void click(WebElement element) {
 		getWait.get().until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
@@ -73,15 +72,18 @@ public class Base {
 		Assert.assertTrue(webElement.isDisplayed());
 		return webElement;
 	}
-	public static String getTitle(){
+	
+	public static String getTitle() {
 		return driver.getTitle();
 	}
-	public static WebElement waitUntilElementBeVisible(WebElement element){
+	
+	public static WebElement waitUntilElementBeVisible(WebElement element) {
 		getWait.get().until(ExpectedConditions.visibilityOf(element));
 		return element;
 	}
-	
-	
+	public static void sendText(WebElement element, String text){
+		element.sendKeys(text);
+	}
 	
 	
 }
