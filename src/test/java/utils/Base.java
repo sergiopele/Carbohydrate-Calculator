@@ -2,12 +2,14 @@ package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.PageInitializer;
 
@@ -21,6 +23,7 @@ public class Base {
 	
 	public static void openBrowser() {
 		ConfigReader.loadProperty(Constants.CONFIG_FILEPATH);
+		
 		switch (ConfigReader.readProperty("browser")) {
 			case "chrome" -> {
 				WebDriverManager.chromedriver().setup();
@@ -81,8 +84,38 @@ public class Base {
 		getWait.get().until(ExpectedConditions.visibilityOf(element));
 		return element;
 	}
-	public static void sendText(WebElement element, String text){
-		element.sendKeys(text);
+	
+	public static void sendText(WebElement element, String text) {
+		try {
+			element.clear();
+			element.sendKeys(text);
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			e.printStackTrace();
+			System.out.println("UNABLE TO SEND TEXT, NO SUCH WEB ELEMENT");
+		} catch (StaleElementReferenceException s){
+			s.printStackTrace();
+			System.out.println("Log.warning UNABLE TO SEND TEXT, STALE ELEMENT EXCEPTION");
+		}
+	}
+	
+	public static void selectValueFromDropDown(WebElement dropDown, String target) {
+		try {
+			new Select(dropDown).selectByVisibleText(target);
+		}catch(NoSuchElementException e){
+			e.printStackTrace();
+			System.out.println("Log.warning NO SUCH DROPDOWN ELEMENT");
+		}catch(StaleElementReferenceException s){
+			s.printStackTrace();
+			System.out.println("Log.warning DROP DOWN STALE ELEMENT EXCEPTION");
+		}
+	}
+	public static void isTextFieldEmpty(WebElement element){
+		try{
+			Assert.assertTrue(element.getText().isEmpty());
+		}catch (NoSuchElementException e){
+			e.printStackTrace();
+			System.out.println("Log.warning UNABLE TO CHECK IS FIELD EMPTY, NO SUCH ELEMENT");
+		}
 	}
 	
 	

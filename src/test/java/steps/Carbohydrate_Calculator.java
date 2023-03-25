@@ -27,7 +27,7 @@ public class Carbohydrate_Calculator extends Base {
 		click(waitUntilElementBeVisible(
 				retrieveWebElementFromList(
 						carbohydrateCalculator.getDashboardTabs(),
-				tab, "no such dashboard tab in Carbohydrate Calculator")));
+						tab, "no such dashboard tab in Carbohydrate Calculator")));
 	}
 	
 	
@@ -44,52 +44,66 @@ public class Carbohydrate_Calculator extends Base {
 	}
 	
 	
-	@When("user enters {int} in Age")
-	public void user_enters_in_age(Integer age) {
-		sendText(carbohydrateCalculator.getAge(), String.valueOf(age));
+	@When("user enters {string} in Age")
+	public void user_enters_in_age(String age) {
+		sendText(carbohydrateCalculator.getAge(), age);
 	}
+	
 	@When("user clicks on {string} gender")
 	public void user_clicks_on_gender(String gender) {
+		switch (gender) {
+			case "Male" -> click(carbohydrateCalculator.getGender().get(0));
+			case "Female" -> click(carbohydrateCalculator.getGender().get(1));
+			default -> throw new RuntimeException("NO SUCH GENDER");
+		}
+	}
 	
+	@When("user enters {string} into feets")
+	public void user_enters_into_feets(String feets) {
+		sendText(carbohydrateCalculator.getFeetUsUnit(), feets);
 	}
-	@When("user enters {int} into feets")
-	public void user_enters_into_feets(Integer int1) {
 	
+	@When("user enters {string} into inches")
+	public void user_enters_into_inches(String inches) {
+		sendText(carbohydrateCalculator.getInchesUsUnit(), inches);
 	}
-	@When("user enters {int} into inches")
-	public void user_enters_into_inches(Integer int1) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	
+	@When("user enters {string} into pounds")
+	public void user_enters_into_pounds(String pounds) {
+		sendText(carbohydrateCalculator.getPoundsUsUnit(), pounds);
 	}
-	@When("user enters {int} into pounds")
-	public void user_enters_into_pounds(Integer int1) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
+	
 	@When("user selects {string}")
-	public void user_selects(String string) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void user_selects(String activity) {
+		selectValueFromDropDown(carbohydrateCalculator.getActivityDropDown(), activity);
 	}
+	
 	@When("user clicks on Settings")
 	public void user_clicks_on_settings() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		click(carbohydrateCalculator.getSettingButton());
 	}
+	
 	@When("user clicks on {string} option")
-	public void user_clicks_on_option(String string) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void user_clicks_on_option(String bmr_estimation_formula)  {
+		switch (bmr_estimation_formula) {
+			case "Mifflin St Jeor" -> click(carbohydrateCalculator.getBmr_estimation_farmula().get(0));
+			case "Katch-McArdle" -> click(carbohydrateCalculator.getBmr_estimation_farmula().get(1));
+			default -> throw new RuntimeException("NO SUCH BMR ESTIMATION FORMULA OR TARGET KEY IS WRONG");
+		}
 	}
+	
 	@When("user clicks on Clear button")
 	public void user_clicks_on_clear_button() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		click(carbohydrateCalculator.getClearButton());
 	}
+	
 	@Then("all entered fields age, feets, inches, pounds should be empty")
 	public void all_entered_fields_age_feets_inches_pounds_should_be_empty() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		isTextFieldEmpty(carbohydrateCalculator.getAge());
+		isTextFieldEmpty(carbohydrateCalculator.getInchesUsUnit());
+		isTextFieldEmpty(carbohydrateCalculator.getFeetUsUnit());
+		isTextFieldEmpty(carbohydrateCalculator.getPoundsUsUnit());
+		isTextFieldEmpty(carbohydrateCalculator.getBodyFatField());
 	}
 	
 	
