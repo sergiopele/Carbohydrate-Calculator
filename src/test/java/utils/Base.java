@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Supplier;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class Base {
 	public static WebDriver driver;
 	private static Supplier<WebDriverWait> getWait = () -> new WebDriverWait(driver, Constants.EXPLICIT_WAIT);
@@ -61,7 +64,8 @@ public class Base {
 	 * @return WebElement target
 	 */
 	public static WebElement retrieveWebElementFromList(List<WebElement> list, String target, String errorMessage) {
-		return list.stream()
+		return list
+				.stream()
 				.filter(webelement -> webelement.getText().equals(target))
 				.findFirst()
 				.orElseThrow(() -> new NoSuchElementException(errorMessage));
@@ -71,9 +75,8 @@ public class Base {
 	 * @param webElement to check is displayed on webPage, (Assert.assertTrue)
 	 * @return webElement
 	 */
-	public static WebElement isElementDisplayed(WebElement webElement) {
-		Assert.assertTrue(webElement.isDisplayed());
-		return webElement;
+	public static boolean isElementDisplayed(WebElement webElement) {
+		return webElement.isDisplayed();
 	}
 	
 	public static String getTitle() {
@@ -92,7 +95,7 @@ public class Base {
 		} catch (org.openqa.selenium.NoSuchElementException e) {
 			e.printStackTrace();
 			System.out.println("UNABLE TO SEND TEXT, NO SUCH WEB ELEMENT");
-		} catch (StaleElementReferenceException s){
+		} catch (StaleElementReferenceException s) {
 			s.printStackTrace();
 			System.out.println("Log.warning UNABLE TO SEND TEXT, STALE ELEMENT EXCEPTION");
 		}
@@ -101,21 +104,45 @@ public class Base {
 	public static void selectValueFromDropDown(WebElement dropDown, String target) {
 		try {
 			new Select(dropDown).selectByVisibleText(target);
-		}catch(NoSuchElementException e){
+		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 			System.out.println("Log.warning NO SUCH DROPDOWN ELEMENT");
-		}catch(StaleElementReferenceException s){
+		} catch (StaleElementReferenceException s) {
 			s.printStackTrace();
 			System.out.println("Log.warning DROP DOWN STALE ELEMENT EXCEPTION");
 		}
 	}
-	public static void isTextFieldEmpty(WebElement element){
-		try{
-			Assert.assertTrue(element.getText().isEmpty());
-		}catch (NoSuchElementException e){
+	
+	public static void isTextFieldEmpty(WebElement element) {
+		try {
+			assertTrue(element.getText().isEmpty());
+		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 			System.out.println("Log.warning UNABLE TO CHECK IS FIELD EMPTY, NO SUCH ELEMENT");
 		}
+	}
+	
+	/**
+	 * Method to check does error MSG NOT displayed on a page.
+	 *
+	 * @param list           contains webElements of error MSGs
+	 * @param targetErrorMSG to be retrieved
+	 */
+	public static void identifyErrorMSG_And_IsNOT_Dispayed_TopOfCarbonHydrateCalculator(List<WebElement> list, String targetErrorMSG) {
+		list
+				.stream()
+				.filter(s -> s.getText().equals(targetErrorMSG))
+				.limit(1)
+				.forEach(s -> assertFalse("Error message is present", isElementDisplayed(s)));
+	}
+	
+	
+	public static void identifyErrorMSG_And_Is_Dispayed_TopOfCarbonHydrateCalculator(List<WebElement> list, String targetErrorMSG) {
+		list
+				.stream()
+				.filter(s -> s.getText().equals(targetErrorMSG))
+				.limit(1)
+				.forEach(s -> assertTrue("Error message is NOT present", isElementDisplayed(s)));
 	}
 	
 	

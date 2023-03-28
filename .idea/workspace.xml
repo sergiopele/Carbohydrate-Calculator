@@ -10,7 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/runners/smoke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runners/smoke.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/steps/Carbohydrate_Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/Carbohydrate_Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/utils/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Dashboard_Functionality_Carbohydrate Calculator.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Dashboard_Functionality_Carbohydrate Calculator.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Dashboard_Functionality_Carbohydrate Calculator.feature" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ToolWindowDebug.ShowToolbar&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/sergiopele/IdeaProjects/Task&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -97,6 +98,46 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Scenario: Verify functionality of &quot;Clear&quot; Button" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/Dashboard_Functionality_Carbohydrate Calculator.feature" />
+      <option name="GLUE" value="steps" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="Task" />
+      <option name="NAME_FILTER" value="^Verify functionality of \&quot;Clear\&quot; Button$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Verify functionality of \&quot;Clear\&quot; Button$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Verify functionality of &quot;Clear&quot; Button" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Verify that the Metric Unit Calculator handle" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/AgeField_CarbonHydrateCalculator.feature" />
+      <option name="GLUE" value="steps" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="Task" />
+      <option name="NAME_FILTER" value="^Verify that the Metric Unit Calculator handle$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Verify that the Metric Unit Calculator handle$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Verify that the Metric Unit Calculator handle" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="smoke" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Task" />
       <extension name="coverage">
@@ -115,6 +156,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.smoke" />
+        <item itemvalue="Cucumber Java.Scenario: Verify that the Metric Unit Calculator handle" />
+        <item itemvalue="Cucumber Java.Scenario: Verify functionality of &quot;Clear&quot; Button" />
         <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
@@ -129,5 +172,16 @@
       <updated>1679602060825</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

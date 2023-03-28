@@ -1,6 +1,7 @@
 package steps;
 
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -84,7 +85,7 @@ public class Carbohydrate_Calculator extends Base {
 	}
 	
 	@When("user clicks on {string} option")
-	public void user_clicks_on_option(String bmr_estimation_formula)  {
+	public void user_clicks_on_option(String bmr_estimation_formula) {
 		switch (bmr_estimation_formula) {
 			case "Mifflin St Jeor" -> click(carbohydrateCalculator.getBmr_estimation_farmula().get(0));
 			case "Katch-McArdle" -> click(carbohydrateCalculator.getBmr_estimation_farmula().get(1));
@@ -106,5 +107,32 @@ public class Carbohydrate_Calculator extends Base {
 		isTextFieldEmpty(carbohydrateCalculator.getBodyFatField());
 	}
 	
+	
+	@And("user enters {string} into Height")
+	public void userEntersIntoHeight(String height) {
+		sendText(carbohydrateCalculator.getHeightMetricUnit(), height);
+	}
+	
+	@And("user enters {string} into Weight")
+	public void userEntersIntoWeight(String weight) {
+		sendText(carbohydrateCalculator.getWeightMetricUnit(), weight);
+	}
+	
+	@And("user clicks on Calculate")
+	public void userClicksOnCalculate() {
+		click(carbohydrateCalculator.getCalculateButton());
+	}
+	
+	@Then("error message {string} should NOT be displayed on the top of calculator")
+	public void errorMessageShouldNotBeDisplaedOnTheTopOfCalculator(String errorMSG_type) {
+		identifyErrorMSG_And_IsNOT_Dispayed_TopOfCarbonHydrateCalculator(
+				carbohydrateCalculator.getErrorMessageTopOfCalculator(), errorMSG_type);
+	}
+	
+	@Then("error message {string} should be displayed on the top of calculator")
+	public void errorMessageShouldBeDisplayedOnTheTopOfCalculator(String errorMSG_type) {
+		identifyErrorMSG_And_Is_Dispayed_TopOfCarbonHydrateCalculator(
+				carbohydrateCalculator.getErrorMessageTopOfCalculator(), errorMSG_type);
+	}
 	
 }

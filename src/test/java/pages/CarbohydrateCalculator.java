@@ -48,6 +48,8 @@ public class CarbohydrateCalculator {
 	private WebElement clearButton;
 	@FindBy(xpath = "//input[@name='cfatpct']")
 	private WebElement bodyFatField;
+	@FindBy(xpath = "//font[@color='red']")
+	private List<WebElement> errorMessageTopOfCalculator;
 
 	
 	public CarbohydrateCalculator() {

@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
 		features = "src/test/resources/features/",
 		glue = "steps",
 		dryRun = false,
-		tags = "@TC_032",
+		tags = "@TC_002",
 		monochrome = true,
 		
 		
-		plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json",
+		plugin = {"pretty","html:target/cucumber.html", "json:target/cucumber.json",
 				"rerun:target/failed.txt", "json:target/cucumber-reports/CucumberTestReport.json"}
 		)
 public class smoke {
